@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Device Control</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 300px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #status {
+            font-size: 18px;
+            margin: 20px 0;
+            font-weight: bold;
+            color: #555;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button.on {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        button.off {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>USB Device Control</h1>
+        <div id="status">Device is OFF</div>
+        <button id="toggleButton" class="off" onclick="toggleUSBDevice()">Turn On/Off</button>
+    </div>
+
+    <script>
+        let usbDeviceStatus = false;  // false means OFF, true means ON
+
+        function toggleUSBDevice() {
+            usbDeviceStatus = !usbDeviceStatus;
+
+            // Update button and status text
+            const button = document.getElementById("toggleButton");
+            const status = document.getElementById("status");
+
+            if (usbDeviceStatus) {
+                status.textContent = "Device is ON";
+                button.textContent = "Turn Off";
+                button.classList.remove("off");
+                button.classList.add("on");
+            } else {
+                status.textContent = "Device is OFF";
+                button.textContent = "Turn On";
+                button.classList.remove("on");
+                button.classList.add("off");
+            }
+        }
+    </script>
+</body>
+</html>
